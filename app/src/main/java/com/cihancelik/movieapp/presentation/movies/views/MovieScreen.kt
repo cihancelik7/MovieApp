@@ -61,14 +61,14 @@ fun MovieScreen(
             LazyColumn(modifier = Modifier.fillMaxSize()) {
                 items(state.movies) { movie ->
                     MovieListRow(movie = movie, onItemClick = {
-                   //     navController.navigate(Screen.MovieDetailScreen.route+"id")
+                        navController.navigate(Screen.MovieDetailScreen.route+"/${movie.imdbID}")
+
                     })
                 }
             }
         }
     }
 }
-
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -81,7 +81,7 @@ fun MovieSearchBar(
         mutableStateOf("")
     }
 
-    var isHintDisplayed by remember{
+    var isHintDisplayed by remember {
         mutableStateOf(hint != "")
     }
 
@@ -99,7 +99,7 @@ fun MovieSearchBar(
             singleLine = true,
             textStyle = TextStyle(color = Color.Black),
             shape = RoundedCornerShape(12.dp),
-            colors = TextFieldDefaults.textFieldColors( containerColor = Color.White),
+            colors = TextFieldDefaults.textFieldColors(containerColor = Color.White),
             modifier = Modifier
                 .fillMaxWidth()
                 .shadow(5.dp, CircleShape)
@@ -109,9 +109,10 @@ fun MovieSearchBar(
                     isHintDisplayed = it.isFocused != true && text.isEmpty()
                 }
         )
-        if (isHintDisplayed){
-            Text(text = hint,
-            color =Color.LightGray,
+        if (isHintDisplayed) {
+            Text(
+                text = hint,
+                color = Color.LightGray,
                 modifier = Modifier.padding(horizontal = 20.dp, vertical = 12.dp)
             )
         }
