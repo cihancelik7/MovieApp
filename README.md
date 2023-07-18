@@ -1,5 +1,5 @@
 # MovieApp
-MVVM + Jetpack Compose
+MVVM + Jetpack Compose + Clean Architecture
 
 Hilt
 
