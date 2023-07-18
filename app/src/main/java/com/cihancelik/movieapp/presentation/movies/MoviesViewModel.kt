@@ -4,8 +4,7 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.cihancelik.movieapp.data.remote.dto.Search
-import com.cihancelik.movieapp.domain.use_case.get_movies.GetMovieUseCase
+import com.cihancelik.movieapp.domain.use_case.get_movies.GetMoviesUseCase
 import com.cihancelik.movieapp.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
@@ -15,7 +14,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MoviesViewModel @Inject constructor(
-    private val getMovieUseCase: GetMovieUseCase
+    private val getMovieUseCase: GetMoviesUseCase
 ) : ViewModel() {
 
     private val _state = mutableStateOf<MoviesState>(MoviesState())

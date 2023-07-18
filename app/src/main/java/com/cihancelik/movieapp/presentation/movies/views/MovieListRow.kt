@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -27,41 +28,42 @@ import com.cihancelik.movieapp.domain.model.MovieDetail
 
 @Composable
 fun MovieListRow(
-    movie: Movie,
-    onItemClick: (Movie) -> Unit
+    movie : Movie,
+    onItemClick : (Movie) -> Unit
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable {
-                onItemClick(movie)
-            }
+            .clickable { onItemClick(movie) }
             .padding(10.dp),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        Image(
-            painter = rememberAsyncImagePainter(model = movie.imdbID),
-            contentDescription = movie.title,
+
+        Image(painter = rememberImagePainter(data = movie.Poster),
+            contentDescription = movie.Title,
             modifier = Modifier
                 .padding(16.dp)
                 .size(200.dp, 200.dp)
                 .clip(RectangleShape)
         )
-        Column(modifier = Modifier.align(CenterVertically),
-        horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(movie.poster,
-            style = MaterialTheme.typography.headlineSmall,
-            overflow = TextOverflow.Ellipsis,
-                color = Color.White,
+
+        Column(modifier = Modifier.align(CenterVertically),horizontalAlignment = Alignment.CenterHorizontally) {
+            Text(movie.Title,
+                style = MaterialTheme.typography.headlineSmall,
+                overflow = TextOverflow.Ellipsis,
+                color = White,
                 textAlign = TextAlign.Center
             )
-            Text(movie.title,
+
+            Text(movie.Year,
                 style = MaterialTheme.typography.titleLarge,
                 overflow = TextOverflow.Ellipsis,
-                color = Color.White,
+                color = White,
                 textAlign = TextAlign.Center
             )
-        }
-    }
 
+        }
+
+
+    }
 }

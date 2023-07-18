@@ -13,8 +13,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.cihancelik.movieapp.domain.model.Movie
+import com.cihancelik.movieapp.presentation.movie_detail.views.MovieDetailScreen
 import com.cihancelik.movieapp.presentation.movies.views.MovieScreen
 import com.cihancelik.movieapp.presentation.ui.theme.MovieAppTheme
+import com.cihancelik.movieapp.util.Constants
 import com.cihancelik.movieapp.util.Constants.IMDB_ID
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,17 +31,16 @@ class MainActivity : ComponentActivity() {
         setContent {
             MovieAppTheme {
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
+                Surface(color = MaterialTheme.colorScheme.background) {
                     val navController = rememberNavController()
-                    NavHost(navController = navController, startDestination = Screen.MovieScreen.route ){
-                        composable(route = Screen.MovieScreen.route){
+                    NavHost(navController = navController,
+                        startDestination = Screen.MovieScreen.route
+                    ) {
+                        composable(route = Screen.MovieScreen.route) {
                             MovieScreen(navController = navController)
                         }
-                        composable(route = Screen.MovieDetailScreen.route+"/${IMDB_ID}"){
-
+                        composable(route = Screen.MovieDetailScreen.route+"/{${IMDB_ID}}") {
+                            MovieDetailScreen()
                         }
                     }
                 }

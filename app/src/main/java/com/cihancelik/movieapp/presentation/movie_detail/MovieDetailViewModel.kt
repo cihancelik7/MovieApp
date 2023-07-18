@@ -17,31 +17,35 @@ import javax.inject.Inject
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
     private val getMovieDetailsUseCase: GetMovieDetailsUseCase,
-    private val stateHandle: SavedStateHandle
+    private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
+
     private val _state = mutableStateOf<MovieDetailState>(MovieDetailState())
-    val state : State<MovieDetailState> = _state
+    val state: State<MovieDetailState> = _state
 
     init {
-        stateHandle.get<String>(IMDB_ID)?.let {
+        savedStateHandle.get<String>(IMDB_ID)?.let {
             getMovieDetail(it)
         }
-
     }
 
-    private fun getMovieDetail(imdbId:String){
+    private fun getMovieDetail(imdbId: String) {
         getMovieDetailsUseCase.executeGetMovieDetails(imdbId = imdbId).onEach {
-            when(it){
-                is Resource.Success ->{
+            when (it) {
+                is Resource.Success -> {
                     _state.value = MovieDetailState(movie = it.data)
                 }
-                is Resource.Error ->{
+
+                is Resource.Error -> {
                     _state.value = MovieDetailState(error = it.message ?: "Error!")
+
                 }
+
                 is Resource.Loading -> {
                     _state.value = MovieDetailState(isLoading = true)
                 }
             }
         }.launchIn(viewModelScope)
     }
+
 }

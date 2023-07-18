@@ -1,32 +1,19 @@
 package com.cihancelik.movieapp.domain.model
 
-import com.google.gson.annotations.SerializedName
 
-data class MovieDetail(
-    @SerializedName("Actors")
-    val actors: String,
-    @SerializedName("Awards")
-    val awards: String,
-    @SerializedName("Country")
-    val country: String,
-    @SerializedName("Director")
-    val director: String,
-    @SerializedName("Genre")
-    val genre: String,
-    @SerializedName("Language")
-    val language: String,
-    @SerializedName("Poster")
-    val poster: String,
-    @SerializedName("Rated")
-    val rated: String,
-    @SerializedName("Released")
-    val released: String,
-    @SerializedName("Title")
-    val title: String,
-    @SerializedName("Type")
-    val type: String,
-    @SerializedName("Year")
-    val year: String,
-    @SerializedName("imdbRating")
-    val imdbRating: String
+
+data class MovieDetail (
+    val Actors: String,
+    val Awards: String,
+    val Country: String,
+    val Director: String,
+    val Genre: String,
+    val Language: String,
+    val Poster: String,
+    val Rated: String,
+    val Released: String,
+    val Title: String,
+    val Type: String,
+    val Year: String,
+    val imdbRating: String,
 )
