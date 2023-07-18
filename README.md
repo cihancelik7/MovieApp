@@ -5,8 +5,6 @@ Hilt
 
 Jetpack Compose
 
-Navigation Component
-
 ViewModel
 
 Coroutines
