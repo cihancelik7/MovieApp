@@ -1,11 +1,11 @@
 # MovieApp
-MVVM + Clean Architecture
+MVVM + Jetpack Compose
 
 Hilt
 
-Room
+Jetpack Component
 
-Navigation Component
+Navigation Compose
 
 ViewModel
 
