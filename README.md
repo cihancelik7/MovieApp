@@ -3,9 +3,9 @@ MVVM + Jetpack Compose
 
 Hilt
 
-Jetpack Component
+Jetpack Compose
 
-Navigation Compose
+Navigation Component
 
 ViewModel
 
